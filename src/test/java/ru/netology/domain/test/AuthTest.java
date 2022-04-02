@@ -1,10 +1,8 @@
 package ru.netology.domain.test;
 
 import com.codeborne.selenide.Configuration;
-import lombok.val;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import ru.netology.domain.data.UserGenerator;
 
 
 import static com.codeborne.selenide.Condition.*;
@@ -22,7 +20,7 @@ public class AuthTest {
 
     @Test
     void happyPath() {
-        UserGenerator.UserInfo validUser = getActiveRegisteredUser();
+        var validUser = getActiveRegisteredUser();
         $("[data-test-id=login] input").setValue(validUser.getLogin());
         $("[data-test-id=password] input").setValue(validUser.getPassword());
         $("[data-test-id='action-login']").click();
