@@ -27,7 +27,7 @@ public class AuthTest {
         $("[data-test-id='action-login']").click();
         $$("h2").findBy(text("Личный кабинет")).shouldBe(visible);
     }
-
+//
     @Test
     void shouldNotSussesLoginWithWrongNameUser() {
         val wrongNameUser = getWrongNameUser();
