@@ -21,7 +21,7 @@ public class AuthTest {
 
     @Test
     void happyPath() {
-        val validUser = getActiveRegisteredUser();
+        var validUser = getActiveRegisteredUser();
         $("[data-test-id=login] input").setValue(validUser.getLogin());
         $("[data-test-id=password] input").setValue(validUser.getPassword());
         $("[data-test-id='action-login']").click();
@@ -30,7 +30,7 @@ public class AuthTest {
 
     @Test
     void shouldNotSussesLoginWithWrongNameUser() {
-        val wrongNameUser = getWrongNameUser();
+        var wrongNameUser = getWrongNameUser();
         $("[data-test-id=login] input").setValue(wrongNameUser.getLogin());
         $("[data-test-id=password] input").setValue(wrongNameUser.getPassword());
         $("[data-test-id='action-login']").click();
