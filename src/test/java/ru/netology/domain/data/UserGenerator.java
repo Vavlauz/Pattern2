@@ -6,7 +6,6 @@ import io.restassured.filter.log.LogDetail;
 import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 import lombok.Value;
-import lombok.val;
 
 import java.util.Locale;
 
@@ -44,14 +43,14 @@ public class UserGenerator {
     }
 
     public static UserInfo getActiveRegisteredUser() {
-        val user = new UserInfo(getLogin(), getPassword(), "active");
+        var user = new UserInfo(getLogin(), getPassword(), "active");
         setUpUser(user);
         return user;
     }
 
     public static UserInfo getWrongNameUser() {
-        val password = getPassword();
-        val user = new UserInfo(getLogin(), password, "active");
+        var password = getPassword();
+        var user = new UserInfo(getLogin(), password, "active");
         setUpUser(user);
         return new UserInfo(getLogin(), password, "active");
     }
