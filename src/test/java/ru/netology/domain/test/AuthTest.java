@@ -1,11 +1,13 @@
 package ru.netology.domain.test;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 
 import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.*;
 import static ru.netology.domain.data.UserGenerator.*;
 
@@ -50,6 +52,6 @@ public class AuthTest {
         $("[data-test-id=login] input").setValue(notValidUser.getLogin());
         $("[data-test-id=password] input").setValue(notValidUser.getPassword());
         $("[data-test-id='action-login']").click();
-        $$("h2").findBy(text("Пользователь заблокирован")).shouldBe(visible);
+        $(withText("Пользователь заблокирован")).shouldBe(Condition.visible);
     }
 }
