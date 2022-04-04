@@ -50,6 +50,6 @@ public class AuthTest {
         $("[data-test-id=login] input").setValue(notValidUser.getLogin());
         $("[data-test-id=password] input").setValue(notValidUser.getPassword());
         $("[data-test-id='action-login']").click();
-        $$("h2").findBy(text("Личный кабинет")).shouldBe(visible);
+        $$("h2").findBy(text("Пользователь заблокирован")).shouldBe(visible);
     }
 }
