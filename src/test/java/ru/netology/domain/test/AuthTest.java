@@ -7,8 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
-import static ru.netology.domain.data.UserGenerator.getActiveRegisteredUser;
-import static ru.netology.domain.data.UserGenerator.getWrongNameUser;
+import static ru.netology.domain.data.UserGenerator.*;
 
 public class AuthTest {
 
@@ -34,5 +33,23 @@ public class AuthTest {
         $("[data-test-id=password] input").setValue(wrongNameUser.getPassword());
         $("[data-test-id='action-login']").click();
         $("[data-test-id=error-notification] .notification__content").shouldHave(text("Неверно указан логин или пароль")).shouldBe(visible);
+    }
+
+    @Test
+    void shouldNotSussesLoginWithWrongPasswordUser() {
+        var wrongPasswordUser = getWrongPasswordUser();
+        $("[data-test-id=login] input").setValue(wrongPasswordUser.getLogin());
+        $("[data-test-id=password] input").setValue(wrongPasswordUser.getPassword());
+        $("[data-test-id='action-login']").click();
+        $("[data-test-id=error-notification] .notification__content").shouldHave(text("Неверно указан логин или пароль")).shouldBe(visible);
+    }
+
+    @Test
+    void badPath() {
+        var notValidUser = getNotRegisteredUser();
+        $("[data-test-id=login] input").setValue(notValidUser.getLogin());
+        $("[data-test-id=password] input").setValue(notValidUser.getPassword());
+        $("[data-test-id='action-login']").click();
+        $$("h2").findBy(text("Личный кабинет")).shouldBe(visible);
     }
 }

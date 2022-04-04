@@ -55,6 +55,19 @@ public class UserGenerator {
         return new UserInfo(getLogin(), password, "active");
     }
 
+    public static UserInfo getWrongPasswordUser() {
+        var name = getLogin();
+        var user = new UserInfo(name, getPassword(), "active");
+        setUpUser(user);
+        return new UserInfo(name, getPassword(), "active");
+    }
+
+    public static UserInfo getNotRegisteredUser() {
+        var user = new UserInfo(getLogin(), getPassword(), "blocked");
+        setUpUser(user);
+        return user;
+    }
+
     @Value
     public static class UserInfo {
         String login;
